@@ -1,13 +1,24 @@
 import pandas as pd
 
 AWS_BUCKET_PATH = "s3://wagon-public-datasets/taxi-fare-train.csv"
+DATA_PATH = "./raw_data/train_1k.csv"
 
-
-def get_data(nrows=10_000):
-    '''returns a DataFrame with nrows from s3 bucket'''
-    df = pd.read_csv(AWS_BUCKET_PATH, nrows=nrows)
+def get_data(nrows=10000, local=True, **kwargs):
+    """method to get the training data (or a portion of it) from google cloud bucket"""
+    # Add Client() here
+    if local:
+        path = DATA_PATH 
+    else:
+        path = AWS_BUCKET_PATH
+    df = pd.read_csv(path, nrows=nrows)
     return df
 
+DIST_ARGS = [
+                "pickup_latitude",
+                "pickup_longitude",
+                'dropoff_latitude',
+                'dropoff_longitude'
+            ]
 
 def clean_data(df, test=False):
     df = df.dropna(how='any', axis='rows')
@@ -24,5 +35,8 @@ def clean_data(df, test=False):
     return df
 
 
-if __name__ == '__main__':
-    df = get_data()
+if __name__ == "__main__":
+    params = dict(nrows=1000,
+                  local=True,  # set to False to get data from GCP (Storage or BigQuery)
+                  )
+    df = get_data(**params)
