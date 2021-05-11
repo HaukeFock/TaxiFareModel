@@ -8,7 +8,7 @@
 
 ### GCP Storage - - - - - - - - - - - - - - - - - - - - - -
 
-BUCKET_NAME=wagon-ml-bizot-27
+BUCKET_NAME=wagon-ml-fock-ds_566
 
 ##### Data  - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -17,7 +17,7 @@ BUCKET_NAME=wagon-ml-bizot-27
 ##### Training  - - - - - - - - - - - - - - - - - - - - - -
 
 # will store the packages uploaded to GCP for the training
-BUCKET_TRAINING_FOLDER = 'trainings'
+BUCKET_TRAINING_FOLDER = 'training'
 
 ### GCP AI Platform - - - - - - - - - - - - - - - - - - - -
 
