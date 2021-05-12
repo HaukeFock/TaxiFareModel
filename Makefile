@@ -62,3 +62,6 @@ clean:
 	@rm -fr build dist *.dist-info *.egg-info
 	@rm -fr */*.pyc
 	@rm model.joblib
+
+run_api:
+	uvicorn api.fast:app --reload  # load web server with code autoreload

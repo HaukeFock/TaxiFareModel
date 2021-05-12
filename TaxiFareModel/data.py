@@ -13,12 +13,12 @@ DIST_ARGS = dict(start_lat="pickup_latitude",
 
 
 @simple_time_tracker
-def get_data(nrows=10000, local=False, optimize=False, **kwargs):
+def get_data(nrows=1000, local=True, optimize=False, **kwargs):
     """method to get the training data (or a portion of it) from google cloud bucket"""
     # Add Client() here
     client = storage.Client()
     if local:
-        path = "data/data_data_10Mill.csv"
+        path = "raw_data/train_10k.csv"
     else:
         #path = "gs://{}/{}".format(BUCKET_NAME, BUCKET_TRAIN_DATA_PATH)
         path = "s3://wagon-public-datasets/taxi-fare-train.csv"
